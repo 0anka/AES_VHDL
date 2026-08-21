@@ -15,5 +15,20 @@ package BYTE_SEQUENCES is
         subtype \32bit\ is std_logic_vector (31 downto 0);
         type STATE is array ( S_IND range <> ) of \8bit\;
         type WORD is array ( W_IND range <> ) of \32bit\;
+        function rotword(\WORD\:\32bit\) return \32bit\; 
 end package BYTE_SEQUENCES;        
+
+package body BYTE_SEQUENCES is
+        function rotword(\WORD\:\32bit\) return \32bit\ is
+                variable word:\32bit\ := (others =>'0');
+        begin
+
+                word(31 downto 24) := \WORD\(23 downto 16);
+                word(23 downto 16) := \WORD\(15 downto 8);
+                word(15 downto 8)  := \WORD\(7 downto 0);
+                word(7 downto 0)   := \WORD\(31 downto 24);
+                return word;
+        end function rotword;
+end package body BYTE_SEQUENCES;
+                 
 
