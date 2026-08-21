@@ -15,7 +15,7 @@ package SUBBYTES is
         type WORD is array ( W_IND range <> ) of \32bit\;
         type SBOX is array ( integer range 15 downto 0 , integer range 15 downto 0 ) of std_logic_vector(7 downto 0);
         function subytes ( \STATE\:STATE(15 downto 0 ) ) return STATE; 
-        function subword (\word\:WORD(3 downto 0) ) return WORD;
+        function subword (\word\:\32bit\ ) return \32bit\;
 end package SUBBYTES;
 package body SUBBYTES is
 constant AES_SBOX : SBOX := (
@@ -216,77 +216,29 @@ constant AES_SBOX : SBOX := (
                 );
             return state;
     end function subytes;
-    function subword (\word\:WORD(3 downto 0) ) return WORD is
-            variable word_out : WORD(3 downto 0) := (others => (others => '0'));
+    function subword (\word\:\32bit\ ) return \32bit\ is
+            variable word_out : \32bit\;
             begin
-                     word_out(3) := AES_SBOX(
-        to_integer(unsigned(\word\(3)(31 downto 28))),
-        to_integer(unsigned(\word\(3)(27 downto 24)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(3)(23 downto 20))),
-        to_integer(unsigned(\word\(3)(19 downto 16)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(3)(15 downto 12))),
-        to_integer(unsigned(\word\(3)(11 downto 8)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(3)(7 downto 4))),
-        to_integer(unsigned(\word\(3)(3 downto 0)))
+                    word_out(31 downto 24) := AES_SBOX(
+        to_integer(unsigned(\word\(31 downto 28))),
+        to_integer(unsigned(\word\(27 downto 24)))
     );
 
-    word_out(2) := AES_SBOX(
-        to_integer(unsigned(\word\(2)(31 downto 28))),
-        to_integer(unsigned(\word\(2)(27 downto 24)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(2)(23 downto 20))),
-        to_integer(unsigned(\word\(2)(19 downto 16)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(2)(15 downto 12))),
-        to_integer(unsigned(\word\(2)(11 downto 8)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(2)(7 downto 4))),
-        to_integer(unsigned(\word\(2)(3 downto 0)))
+                   word_out(23 downto 16) := AES_SBOX(
+        to_integer(unsigned(\word\(23 downto 20))),
+        to_integer(unsigned(\word\(19 downto 16)))
     );
 
-    word_out(1) := AES_SBOX(
-        to_integer(unsigned(\word\(1)(31 downto 28))),
-        to_integer(unsigned(\word\(1)(27 downto 24)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(1)(23 downto 20))),
-        to_integer(unsigned(\word\(1)(19 downto 16)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(1)(15 downto 12))),
-        to_integer(unsigned(\word\(1)(11 downto 8)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(1)(7 downto 4))),
-        to_integer(unsigned(\word\(1)(3 downto 0)))
+                   word_out(15 downto 8) := AES_SBOX(
+        to_integer(unsigned(\word\(15 downto 12))),
+        to_integer(unsigned(\word\(11 downto 8)))
     );
 
-    word_out(0) := AES_SBOX(
-        to_integer(unsigned(\word\(0)(31 downto 28))),
-        to_integer(unsigned(\word\(0)(27 downto 24)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(0)(23 downto 20))),
-        to_integer(unsigned(\word\(0)(19 downto 16)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(0)(15 downto 12))),
-        to_integer(unsigned(\word\(0)(11 downto 8)))
-    )
-    & AES_SBOX(
-        to_integer(unsigned(\word\(0)(7 downto 4))),
-        to_integer(unsigned(\word\(0)(3 downto 0)))
+                   word_out(7 downto 0) := AES_SBOX(
+        to_integer(unsigned(\word\(7 downto 4))),
+        to_integer(unsigned(\word\(3 downto 0)))
     );
-          return word_out;
+                              return word_out;
     end function subword;
 end package body SUBBYTES; 
 
