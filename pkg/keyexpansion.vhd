@@ -13,6 +13,11 @@ package KEYEXPANSION is
         subtype counter is integer range 0 to 10; 
         type STATE is array ( S_IND range <> ) of \8bit\;
         type WORD is array ( W_IND range <> ) of \32bit\;
+        type type KEY_EXPANSION_STATE is (
+        KEY_IDLE,
+        KEY_EXPAND,
+        KEY_DONE
+    );
         function key_expansion(word:WORD(3 downto 0);coun:counter) return WORD; 
 end package KEYEXPANSION;
 package body KEYEXPANSION is
