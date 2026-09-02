@@ -242,11 +242,20 @@ begin
                             state_reg(15 downto 8)  <= state_v(1);
                             state_reg(7 downto 0)   <= state_v(0);
 
+                            ciphertext <=
+                                    state_v(15) & state_v(14) &
+                                    state_v(13) & state_v(12) &
+                                    state_v(11) & state_v(10) &
+                                    state_v(9)  & state_v(8)  &
+                                    state_v(7)  & state_v(6)  &
+                                    state_v(5)  & state_v(4)  &
+                                    state_v(3)  & state_v(2) &
+                                    state_v(1)  & state_v(0);
+
                             aes_state <= END_STATE;
 
                         elsif aes_state = END_STATE then
 
-                            ciphertext <= state_reg;
                             aes_state <= IDLE;
 
                        end if;
