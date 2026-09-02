@@ -25,6 +25,29 @@ entity AES is
 );
 end entity AES;
 
+architecture AES_128_ENGINE of AES is
+
+        type AES_ROUND_STATE is (
+        IDLE,
+        START,
+        ROUND,
+        FINAL_ROUND,
+        END_STATE
+);
+
+
+        signal aes_state : AES_ROUND_STATE := IDLE;
+        signal state_reg : AES_128 := (others => '0');
+        signal round_key : AES_128 := (others => '0');
+        signal round_counter : integer range 0 to 10 := 0;
+        signal state_array : STATE(15 downto 0);
+        signal key_array   : WORD(3 downto 0);
+
+
+
+
+end architecture AES_128_ENGINE;
+
  
             
         
