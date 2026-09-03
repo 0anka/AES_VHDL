@@ -15,11 +15,8 @@ package BYTE_SEQUENCES is
         subtype \32bit\ is std_logic_vector (31 downto 0);
         type STATE is array ( S_IND range <> ) of \8bit\;
         type WORD is array ( W_IND range <> ) of \32bit\;
-        type RCON is array ( S_IND range <> ) of \32bit\;
-        function rotword(\WORD\:\32bit\) return \32bit\; 
-end package BYTE_SEQUENCES;        
+        type RCON is array ( S_IND range <> ) of \32bit\; 
 
-package body BYTE_SEQUENCES is
         constant Rcon : RCON(10 downto 1) := (
         
         1=>(x"01" & x"00" & x"00" & x"00"),
@@ -43,6 +40,10 @@ package body BYTE_SEQUENCES is
         10=>(x"36" & x"00" & x"00" &x"00" )
         );
 
+        function rotword(\WORD\:\32bit\) return \32bit\; 
+end package BYTE_SEQUENCES;        
+
+package body BYTE_SEQUENCES is
         function rotword(\WORD\:\32bit\) return \32bit\ is
                 variable word:\32bit\ := (others =>'0');
         begin

@@ -5,15 +5,9 @@
 -- GENERAL SEQUENCE OF BITS
 -- SUBBYTES USING SBOX 
 library IEEE; use IEEE.STD_LOGIC_1164.ALL; use IEEE.NUMERIC_STD.ALL;
+library WORK;use WORK.BYTE_SEQUENCES.ALL;
 package SUBBYTES is
-        type S_IND is range 15 downto 0;
-        type W_IND is range 3 downto 0;
-        subtype AES_128 is std_logic_vector(127 downto 0 );
-        subtype \8bit\ is std_logic_vector ( 7 downto 0 );
-        subtype \32bit\ is std_logic_vector (31 downto 0);
-        type STATE is array ( S_IND range <> ) of \8bit\;
-        type WORD is array ( W_IND range <> ) of \32bit\;
-        type SBOX is array ( integer range 15 downto 0 , integer range 15 downto 0 ) of std_logic_vector(7 downto 0);
+                type SBOX is array ( integer range 15 downto 0 , integer range 15 downto 0 ) of std_logic_vector(7 downto 0);
         function subytes ( \STATE\:STATE(15 downto 0 ) ) return STATE; 
         function subword (\word\:\32bit\ ) return \32bit\;
 end package SUBBYTES;

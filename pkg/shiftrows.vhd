@@ -4,15 +4,9 @@
 -- s = sr,(c+r) mod 4 for 0 ≤ r < 4 and 0 ≤ c < 4. MATHEMATICAL IMPLEMENTATION 
 -- GOOD MATHEMATICALL REPRESNTATION BAD HARDWARE IMPLEMENTATION
 library IEEE; use IEEE.STD_LOGIC_1164.ALL; use IEEE.NUMERIC_STD.ALL;
+library WORK; use WORK.BYTE_SEQUENCES.ALL;
 package SHIFTROWS is
-        type S_IND is range 15 downto 0;
-        type W_IND is range 3 downto 0;
-        subtype AES_128 is std_logic_vector(127 downto 0 );
-        subtype \8bit\ is std_logic_vector ( 7 downto 0 );
-        subtype \32bit\ is std_logic_vector (31 downto 0);
-        type STATE is array ( S_IND range <> ) of \8bit\;
-        type WORD is array ( W_IND range <> ) of \32bit\;
-        type SHIFTROW is array ( integer range 3 downto 0,integer range 3 downto 0 ) of \8bit\;
+                type SHIFTROW is array ( integer range 3 downto 0,integer range 3 downto 0 ) of \8bit\;
         function shiftrows ( \STATE\:STATE(15 downto 0 ) ) return STATE; 
 end package SHIFTROWS;
 package body SHIFTROWS is 

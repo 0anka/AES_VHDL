@@ -4,20 +4,14 @@
 --  Copyright (C) 2026 Malefax
 -- KEY_EXPANSION ALGORITHM IMPLEMENTATED
 library IEEE; use IEEE.STD_LOGIC_1164.ALL; use IEEE.NUMERIC_STD.ALL;
+library WORK; use WORK.BYTE_SEQUENCES.ALL; use WORK.SUBBYTES.ALL;
 package KEYEXPANSION is
-        type S_IND is range 15 downto 0;
-        type W_IND is range 3 downto 0;
-        subtype AES_128 is std_logic_vector(127 downto 0 );
-        subtype \8bit\ is std_logic_vector ( 7 downto 0 );
-        subtype \32bit\ is std_logic_vector (31 downto 0);
-        subtype counter is integer range 0 to 10; 
-        type STATE is array ( S_IND range <> ) of \8bit\;
-        type WORD is array ( W_IND range <> ) of \32bit\;
-        type type KEY_EXPANSION_STATE is (
+                 type KEY_EXPANSION_STATE is (
         KEY_IDLE,
         KEY_EXPAND,
         KEY_DONE
     );
+        subtype counter is integer range 0 to 10;
         function key_expansion(word:WORD(3 downto 0);coun:counter) return WORD; 
 end package KEYEXPANSION;
 package body KEYEXPANSION is

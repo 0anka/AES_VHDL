@@ -8,15 +8,9 @@
 --s = s0,c ⊕ s1,c ⊕ ({02} • s2,c) ⊕ ({03} • s3,c)
 --s = ({03} • s0,c) ⊕ s1,c ⊕ s2,c ⊕ ({02} • s3,c)
 library IEEE; use IEEE.STD_LOGIC_1164.ALL; use IEEE.NUMERIC_STD.ALL;
+library WORK; use WORK.BYTE_SEQUENCES.ALL;use WORK.RUSSIAN_PEASENT.ALL;
 package MIXCOLUMNS is
-        type S_IND is range 15 downto 0;
-        type W_IND is range 3 downto 0;
-        subtype AES_128 is std_logic_vector(127 downto 0 );
-        subtype \8bit\ is std_logic_vector ( 7 downto 0 );
-        subtype \32bit\ is std_logic_vector (31 downto 0);
-        type STATE is array ( S_IND range <> ) of \8bit\;
-        type WORD is array ( W_IND range <> ) of \32bit\;
-        type \MIXCOLUMNS\ is array ( integer range 3 downto 0,integer range 3 downto 0 ) of \8bit\;
+                type \MIXCOLUMNS\ is array ( integer range 3 downto 0,integer range 3 downto 0 ) of \8bit\;
         function mixcolumns ( \STATE\:STATE(15 downto 0 ) ) return STATE; 
 end package MIXCOLUMNS;
 package body MIXCOLUMNS is 

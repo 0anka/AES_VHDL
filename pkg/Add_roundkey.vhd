@@ -6,15 +6,9 @@
 -- MATHEMATICAL IMPLEMENTATION ADDEd
 --  Copyright (C) 2026 Malefax
 library IEEE; use IEEE.STD_LOGIC_1164.ALL; use IEEE.NUMERIC_STD.ALL;
+library WORK;use WORK.BYTE_SEQUENCES.ALL;
 package ADD_ROUND_KEY is
-        type S_IND is range 15 downto 0;
-        type W_IND is range 3 downto 0;
-        subtype AES_128 is std_logic_vector(127 downto 0 );
-        subtype \8bit\ is std_logic_vector ( 7 downto 0 );
-        subtype \32bit\ is std_logic_vector (31 downto 0);
-        type STATE is array ( S_IND range <> ) of \8bit\;
-        type WORD is array ( W_IND range <> ) of \32bit\;
-        function add_round_key(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state;
+               function add_round_key(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state;
 end package ADD_ROUND_KEY;
 package body ADD_ROUND_KEY is
         function add_round_key(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state is
