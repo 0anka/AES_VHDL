@@ -127,88 +127,88 @@ constant AES_SBOX : SBOX := (
 );
 
         function subytes ( \STATE\:STATE( 15 downto 0) ) return STATE is
-              variable state : STATE ( 15 downto 0) := \STATE\;
+              variable state_out : STATE ( 15 downto 0) := \STATE\;
         begin
-                state(15):=AES_SBOX(
-                to_integer(unsigned(state(15)(7 downto 4))),
-                to_integer(unsigned(state(15)(3 downto 0)))
+                state_out(15):=AES_SBOX(
+                to_integer(unsigned(state_out(15)(7 downto 4))),
+                to_integer(unsigned(state_out(15)(3 downto 0)))
                 );
 
-                state(14):=AES_SBOX(
-                to_integer(unsigned(state(14)(7 downto 4))),
-                to_integer(unsigned(state(14)(3 downto 0)))
+                state_out(14):=AES_SBOX(
+                to_integer(unsigned(state_out(14)(7 downto 4))),
+                to_integer(unsigned(state_out(14)(3 downto 0)))
                 );
 
-                state(13):=AES_SBOX(
-                to_integer(unsigned(state(13)(7 downto 4))),
-                to_integer(unsigned(state(13)(3 downto 0)))
+                state_out(13):=AES_SBOX(
+                to_integer(unsigned(state_out(13)(7 downto 4))),
+                to_integer(unsigned(state_out(13)(3 downto 0)))
                 );
 
-                state(12):=AES_SBOX(
-                to_integer(unsigned(state(12)(7 downto 4))),
-                to_integer(unsigned(state(12)(3 downto 0)))
+                state_out(12):=AES_SBOX(
+                to_integer(unsigned(state_out(12)(7 downto 4))),
+                to_integer(unsigned(state_out(12)(3 downto 0)))
                 );
 
-                state(11):=AES_SBOX(
-                to_integer(unsigned(state(11)(7 downto 4))),
-                to_integer(unsigned(state(11)(3 downto 0)))
+                state_out(11):=AES_SBOX(
+                to_integer(unsigned(state_out(11)(7 downto 4))),
+                to_integer(unsigned(state_out(11)(3 downto 0)))
                 );
 
-                state(10):=AES_SBOX(
-                to_integer(unsigned(state(10)(7 downto 4))),
-                to_integer(unsigned(state(10)(3 downto 0)))
+                state_out(10):=AES_SBOX(
+                to_integer(unsigned(state_out(10)(7 downto 4))),
+                to_integer(unsigned(state_out(10)(3 downto 0)))
                 );
 
-                state(9):=AES_SBOX(
-                to_integer(unsigned(state(9)(7 downto 4))),
-                to_integer(unsigned(state(9)(3 downto 0)))
+                state_out(9):=AES_SBOX(
+                to_integer(unsigned(state_out(9)(7 downto 4))),
+                to_integer(unsigned(state_out(9)(3 downto 0)))
                 );
 
-                state(8):=AES_SBOX(
-                to_integer(unsigned(state(8)(7 downto 4))),
-                to_integer(unsigned(state(8)(3 downto 0)))
+                state_out(8):=AES_SBOX(
+                to_integer(unsigned(state_out(8)(7 downto 4))),
+                to_integer(unsigned(state_out(8)(3 downto 0)))
                 );
 
-                state(7):=AES_SBOX(
-                to_integer(unsigned(state(7)(7 downto 4))),
-                to_integer(unsigned(state(7)(3 downto 0)))
+                state_out(7):=AES_SBOX(
+                to_integer(unsigned(state_out(7)(7 downto 4))),
+                to_integer(unsigned(state_out(7)(3 downto 0)))
                 );
 
-                state(6):=AES_SBOX(
-                to_integer(unsigned(state(6)(7 downto 4))),
-                to_integer(unsigned(state(6)(3 downto 0)))
+                state_out(6):=AES_SBOX(
+                to_integer(unsigned(state_out(6)(7 downto 4))),
+                to_integer(unsigned(state_out(6)(3 downto 0)))
                 );
 
-                state(5):=AES_SBOX(
-                to_integer(unsigned(state(5)(7 downto 4))),
-                to_integer(unsigned(state(5)(3 downto 0)))
+                state_out(5):=AES_SBOX(
+                to_integer(unsigned(state_out(5)(7 downto 4))),
+                to_integer(unsigned(state_out(5)(3 downto 0)))
                 );
 
-                state(4):=AES_SBOX(
-                to_integer(unsigned(state(4)(7 downto 4))),
-                to_integer(unsigned(state(4)(3 downto 0)))
+                state_out(4):=AES_SBOX(
+                to_integer(unsigned(state_out(4)(7 downto 4))),
+                to_integer(unsigned(state_out(4)(3 downto 0)))
                 );
 
-                state(3):=AES_SBOX(
-                to_integer(unsigned(state(3)(7 downto 4))),
-                to_integer(unsigned(state(3)(3 downto 0)))
+                state_out(3):=AES_SBOX(
+                to_integer(unsigned(state_out(3)(7 downto 4))),
+                to_integer(unsigned(state_out(3)(3 downto 0)))
                 );
 
-                state(2):=AES_SBOX(
-                to_integer(unsigned(state(2)(7 downto 4))),
-                to_integer(unsigned(state(2)(3 downto 0)))
+                state_out(2):=AES_SBOX(
+                to_integer(unsigned(state_out(2)(7 downto 4))),
+                to_integer(unsigned(state_out(2)(3 downto 0)))
                 );
 
-                state(1):=AES_SBOX(
-                to_integer(unsigned(state(1)(7 downto 4))),
-                to_integer(unsigned(state(1)(3 downto 0)))
+                state_out(1):=AES_SBOX(
+                to_integer(unsigned(state_out(1)(7 downto 4))),
+                to_integer(unsigned(state_out(1)(3 downto 0)))
                 );
                 
-                state(0):=AES_SBOX(
-                to_integer(unsigned(state(0)(7 downto 4))),
-                to_integer(unsigned(state(0)(3 downto 0)))
+                state_out(0):=AES_SBOX(
+                to_integer(unsigned(state_out(0)(7 downto 4))),
+                to_integer(unsigned(state_out(0)(3 downto 0)))
                 );
-            return state;
+            return state_out;
     end function subytes;
     function subword (\word\:\32bit\ ) return \32bit\ is
             variable word_out : \32bit\;
