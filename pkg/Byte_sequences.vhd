@@ -17,7 +17,7 @@ package BYTE_SEQUENCES is
         type WORD is array ( W_IND range <> ) of \32bit\;
         type RCON is array ( S_IND range <> ) of \32bit\; 
 
-        constant Rcon : RCON(10 downto 1) := (
+        constant \Rcon\ : RCON(10 downto 1) := (
         
         1=>(x"01" & x"00" & x"00" & x"00"),
 
@@ -40,19 +40,19 @@ package BYTE_SEQUENCES is
         10=>(x"36" & x"00" & x"00" &x"00" )
         );
 
-        function rotword(\WORD\:\32bit\) return \32bit\; 
+        function rotword(input_word:\32bit\) return \32bit\; 
 end package BYTE_SEQUENCES;        
 
 package body BYTE_SEQUENCES is
-        function rotword(\WORD\:\32bit\) return \32bit\ is
-                variable word:\32bit\ := (others =>'0');
+        function rotword(input_word:\32bit\) return \32bit\ is
+                variable \word\:\32bit\ := (others =>'0');
         begin
 
-                word(31 downto 24) := \WORD\(23 downto 16);
-                word(23 downto 16) := \WORD\(15 downto 8);
-                word(15 downto 8)  := \WORD\(7 downto 0);
-                word(7 downto 0)   := \WORD\(31 downto 24);
-                return word;
+                \word\(31 downto 24) := input_word(23 downto 16);
+                \word\(23 downto 16) := input_word(15 downto 8);
+                \word\(15 downto 8)  := input_word(7 downto 0);
+                \word\(7 downto 0)   := input_word(31 downto 24);
+                return \word\;
         end function rotword;
 end package body BYTE_SEQUENCES;
                  
