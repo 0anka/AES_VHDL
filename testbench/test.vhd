@@ -11,7 +11,7 @@ entity testbench is
 end entity testbench;
 
 architecture test of testbench is
-        component AES_128
+        component AES
                 port(
                     clock : in std_logic;
                     key_state : in std_logic;
@@ -22,7 +22,7 @@ architecture test of testbench is
                     busy : out std_logic;
                     done : out std_logic
             );
-        end component AES_128;
+        end component AES;
 
         signal clk       : std_logic := '0';
         signal testks    : std_logic := '1';
@@ -32,7 +32,7 @@ architecture test of testbench is
         signal testkey   : AES_128 := x"2B7E151628AED2A6ABF7158809CF4F3C";
         signal cipher : AES_128;
 begin
-        testunit:AES_128
+        testunit:AES
         port map (
                 clock=>clk,
                 key_state=>testks,
@@ -80,8 +80,8 @@ begin
 end architecture test;
 
 configuration CFG_AES_128 of testbench is
-        for testbench
-                for testunit:AES_128
+        for test
+                for testunit:AES
                         use entity WORK.AES(AES_128_ENGINE);
                 end for;
         end for;
