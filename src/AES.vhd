@@ -91,7 +91,7 @@ begin
                             key_v(1) := round_key(63 downto 32);
                             key_v(0) := round_key(31 downto 0);
 
-                            state_v := add_round_key(state_v, key_v);
+                            state_v := add_roundkey(state_v, key_v);
 
                             state_reg(127 downto 120) <= state_v(15);
                             state_reg(119 downto 112) <= state_v(14);
@@ -141,9 +141,9 @@ begin
 
                             state_v := subytes(state_v);
 
-                            state_v := shiftrows(state_v);
+                            state_v := shift_rows(state_v);
 
-                            state_v := mixcolumns(state_v);
+                            state_v := mix_columns(state_v);
 
                             key_v(3) := round_key(127 downto 96);
                             key_v(2) := round_key(95 downto 64);
@@ -157,7 +157,7 @@ begin
                             round_key(63 downto 32)  <= key_v(1);
                             round_key(31 downto 0)   <= key_v(0);
 
-                            state_v := add_round_key(state_v, key_v);
+                            state_v := add_roundkey(state_v, key_v);
 
                             state_reg(127 downto 120) <= state_v(15);
                             state_reg(119 downto 112) <= state_v(14);
@@ -211,7 +211,7 @@ begin
 
                             state_v := subytes(state_v);
 
-                            state_v := shiftrows(state_v);
+                            state_v := shift_rows(state_v);
 
                             key_v(3) := round_key(127 downto 96);
                             key_v(2) := round_key(95 downto 64);
@@ -220,7 +220,7 @@ begin
 
                             key_v := key_expansion(key_v,10);
 
-                            state_v := add_round_key(state_v, key_v);
+                            state_v := add_roundkey(state_v, key_v);
 
                             state_reg(127 downto 120) <= state_v(15);
                             state_reg(119 downto 112) <= state_v(14);
