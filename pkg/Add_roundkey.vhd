@@ -8,18 +8,17 @@
 library IEEE; use IEEE.STD_LOGIC_1164.ALL; use IEEE.NUMERIC_STD.ALL;
 library WORK;use WORK.BYTE_SEQUENCES.ALL;
 package ADD_ROUND_KEY is
-               function add_round_key(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state;
+               function add_roundkey(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state;
 end package ADD_ROUND_KEY;
 package body ADD_ROUND_KEY is
-        function add_round_key(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state is
-                variable state:STATE(15 downto 0) := \STATE\;
-                variable newstate:STATE(15 downto 0);
+        function add_roundkey(\STATE\:STATE(15 downto 0);\WORD\:WORD(3 downto 0)) return state is
+                variable new_state:STATE(15 downto 0);
                 variable new_word:WORD(3 downto 0);
         begin
-                new_word(0) := (STATE(15) & STATE(14) & STATE(13) & STATE(12)) xor \word\(3);
-                new_word(1) := (STATE(11) & STATE(10) & STATE(9) & STATE(8)) xor \word\(2);
-                new_word(2) := (STATE(7) & STATE(6) & STATE(5) & STATE(4)) xor \word\(1);
-                new_word(3) := (STATE(3) & STATE(2) & STATE(1) & STATE(0)) xor \word\(0);
+                new_word(0) := (\STATE\(15) & \STATE\(14) & \STATE\(13) & \STATE\(12)) xor \WORD\(3);
+                new_word(1) := (\STATE\(11) & \STATE\(10) & \STATE\(9) & \STATE\(8)) xor \WORD\(2);
+                new_word(2) := (\STATE\(7) & \STATE\(6) & \STATE\(5) & \STATE\(4)) xor \WORD\(1);
+                new_word(3) := (\STATE\(3) & \STATE\(2) & \STATE\(1) & \STATE\(0)) xor \WORD\(0);
 
                 new_state(15) := new_word(0)(31 downto 24);
                 new_state(14) := new_word(0)(23 downto 16 );
@@ -42,7 +41,7 @@ package body ADD_ROUND_KEY is
                 new_state(0) := new_word(3)(7 downto 0);
                 
                 return new_state;
-        end function add_round_key;
+        end function add_roundkey;
 end package body add_round_key;
 
 
