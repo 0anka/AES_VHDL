@@ -25,7 +25,7 @@ architecture test of testbench is
         end component AES;
 
         signal clk       : std_logic := '0';
-        signal testks    : std_logic := '1';
+        signal testks    : std_logic := '0';
         signal busy       : std_logic;
         signal done       : std_logic;
         signal testplain : AES_128 := x"3243F6A8885A308D313198A2E0370734";
@@ -52,6 +52,24 @@ begin
                 wait for 10 ns;
         end process clock;
 
+        triggerd:process
+                variable l : line;
+        begin
+                wait until rising_edge(clk);
+                testks <= '1';
+                
+                wait until rising_edge(clk);
+                testks <= '0';
+
+                wait until done = '1';
+                write(l,string'("CIPHERTEXT : "));
+                hwrite(l,cipher);
+                writeline(output,l);
+                wait;
+
+        end process triggerd;
+
+               
         event:process(busy,done)
                 variable l : line;
         begin
@@ -67,16 +85,6 @@ begin
                         writeline(output,l);
                 end if;
         end process event;
-
-        triggerd:process(done)
-                variable l : line ;
-        begin
-                if done = '1' then
-                        write(l,string'("CIPHERTEXT : "));
-                        hwrite(l,cipher);
-                        writeline(output,l);
-                end if;
-        end process triggerd;
 end architecture test;
 
 configuration CFG_AES_128 of testbench is
